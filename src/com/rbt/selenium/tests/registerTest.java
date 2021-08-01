@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class logInTest implements Website_Constants, User_Constants {
+public class registerTest implements Website_Constants, User_Constants {
     private WebDriver driver;
     @Before
     public void setUp() {
@@ -21,14 +21,16 @@ public class logInTest implements Website_Constants, User_Constants {
         driver.quit();
     }
     @Test
-    public void logInTestFunction() {
-        driver.get(WEBSITE_LOGIN);
+    public void registerTestFunction() {
+        driver.get(WEBSITE_REGISTER);
         driver.manage().window().setSize(new Dimension(1440, 804));
-        driver.findElement(By.id("username")).click();
-        driver.findElement(By.id("username")).sendKeys(EMAIL);
-        driver.findElement(By.id("password")).click();
-        driver.findElement(By.id("password")).sendKeys(PASSWORD);
-        driver.findElement(By.name("login")).click();
+        driver.findElement(By.id("reg_username")).click();
+        driver.findElement(By.id("reg_username")).sendKeys(USERNAME);
+        driver.findElement(By.id("reg_email")).click();
+        driver.findElement(By.id("reg_email")).sendKeys(EMAIL);
+        driver.findElement(By.id("reg_password")).click();
+        driver.findElement(By.id("reg_password")).sendKeys(PASSWORD);
+        driver.findElement(By.name("register")).click();
         Assert.assertEquals(driver.getCurrentUrl(), WEBSITE_ROOT);
     }
 }
