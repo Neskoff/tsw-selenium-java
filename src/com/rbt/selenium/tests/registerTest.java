@@ -9,6 +9,8 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class registerTest implements Website_Constants, User_Constants {
     private WebDriver driver;
     @Before
@@ -20,6 +22,10 @@ public class registerTest implements Website_Constants, User_Constants {
     public void tearDown() {
         driver.quit();
     }
+    /*NOTE:Before running this test please change the USERNAME, EMAIL and PASSWORD
+    In the User_Constants Interface, otherwise the test will fail because the user
+    is already registered.
+     */
     @Test
     public void registerTestFunction() {
         driver.get(WEBSITE_REGISTER);
@@ -31,6 +37,16 @@ public class registerTest implements Website_Constants, User_Constants {
         driver.findElement(By.id("reg_password")).click();
         driver.findElement(By.id("reg_password")).sendKeys(PASSWORD);
         driver.findElement(By.name("register")).click();
-        Assert.assertEquals(driver.getCurrentUrl(), WEBSITE_ROOT);
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        Assert.assertEquals(WEBSITE_ROOT, driver.getCurrentUrl());
+    }
+    @Test
+    public void registerDetailsFunction() {
+        driver.get(WEBSITE_USER_DETAILS);
+        driver.manage().window().setSize(new Dimension(1440, 804));
+        boolean accountNameCompare = driver.findElement(By.id("account_display_name")).getText().equals(USERNAME);
+        boolean emailCompare = driver.findElement(By.id("account_email")).getText().equals(EMAIL);
+        boolean result = accountNameCompare && emailCompare;
+        Assert.assertTrue(result);
     }
 }

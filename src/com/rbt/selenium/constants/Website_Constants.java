@@ -6,6 +6,7 @@ public interface Website_Constants {
     String WEBSITE_ROOT = "https://jaggerbrand.com/";
     String WEBSITE_LOGIN = "https://jaggerbrand.com/prijava-korisnika/";
     String WEBSITE_REGISTER = "https://jaggerbrand.com/registracija-korisnika/";
+    String WEBSITE_USER_DETAILS = "https://jaggerbrand.com/moj-nalog/uredite-svoj-nalog/";
 
 
 }
