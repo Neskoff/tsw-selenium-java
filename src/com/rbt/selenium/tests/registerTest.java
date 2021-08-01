@@ -40,13 +40,4 @@ public class registerTest implements Website_Constants, User_Constants {
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         Assert.assertEquals(WEBSITE_ROOT, driver.getCurrentUrl());
     }
-    @Test
-    public void registerDetailsFunction() {
-        driver.get(WEBSITE_USER_DETAILS);
-        driver.manage().window().setSize(new Dimension(1440, 804));
-        boolean accountNameCompare = driver.findElement(By.id("account_display_name")).getText().equals(USERNAME);
-        boolean emailCompare = driver.findElement(By.id("account_email")).getText().equals(EMAIL);
-        boolean result = accountNameCompare && emailCompare;
-        Assert.assertTrue(result);
-    }
 }
