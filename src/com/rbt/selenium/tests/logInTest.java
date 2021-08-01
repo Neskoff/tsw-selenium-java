@@ -29,6 +29,6 @@ public class logInTest implements Website_Constants, User_Constants {
         driver.findElement(By.id("password")).click();
         driver.findElement(By.id("password")).sendKeys(PASSWORD);
         driver.findElement(By.name("login")).click();
-        Assert.assertEquals(driver.getCurrentUrl(), WEBSITE_ROOT);
+        Assert.assertEquals(WEBSITE_ROOT, driver.getCurrentUrl());
     }
 }
