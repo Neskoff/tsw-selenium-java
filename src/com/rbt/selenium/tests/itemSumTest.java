@@ -52,7 +52,7 @@ public class itemSumTest implements Website_Constants, User_Constants {
         itemPrice = driver.findElement(By.className("oxy-woo-add-to-cart")).
                 findElement(By.tagName("bdi")).getText();
         itemPrice = itemPrice.substring(0, itemPrice.length() - 4).replace(',','.');
-        Double finalPrice = Double.valueOf(itemPrice);
+        double finalPrice = Double.parseDouble(itemPrice);
         double actualPrice = itemsSKU.get(0) + itemsSKU.get(1) + itemsSKU.get(2);
         Assert.assertEquals(finalPrice, actualPrice, 00.00);
     }

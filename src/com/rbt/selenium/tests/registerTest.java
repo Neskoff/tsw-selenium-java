@@ -38,6 +38,7 @@ public class registerTest implements Website_Constants, User_Constants {
         driver.findElement(By.id("reg_password")).sendKeys(PASSWORD);
         driver.findElement(By.name("register")).click();
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-        Assert.assertEquals(WEBSITE_ROOT, driver.getCurrentUrl());
+        boolean result = driver.getPageSource().contains("Odjavite se");
+        Assert.assertTrue(result);
     }
 }
