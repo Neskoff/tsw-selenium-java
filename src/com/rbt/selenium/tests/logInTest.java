@@ -9,6 +9,8 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class logInTest implements Website_Constants, User_Constants {
     private WebDriver driver;
     @Before
@@ -29,6 +31,7 @@ public class logInTest implements Website_Constants, User_Constants {
         driver.findElement(By.id("password")).click();
         driver.findElement(By.id("password")).sendKeys(PASSWORD);
         driver.findElement(By.name("login")).click();
-        Assert.assertEquals(WEBSITE_ROOT, driver.getCurrentUrl());
+        boolean result = driver.getPageSource().contains(USERNAME);
+        Assert.assertTrue(result);
     }
 }
